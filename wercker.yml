@@ -56,8 +56,8 @@ deploy:
   steps:
     - internal/docker-push:
         cwd: $WERCKER_OUTPUT_DIR/app
-        username: $USERNAME
-        password: $PASSWORD
-        repository: dotnetcoreservices/teamservice
+        username: $DockerUserName
+        password: $DockerPassword
+        repository: dockrudan/microservices
         registry: https://registry.hub.docker.com
         entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
