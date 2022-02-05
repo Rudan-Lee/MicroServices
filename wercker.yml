@@ -4,52 +4,18 @@ build:
   steps: 
     - script:
         name: restore
-        cwd: src/MicroServices
         code: |
           dotnet restore
     - script:
         name: build
-        cwd: src/MicroServices
         code: |
           dotnet build  
     - script:
         name: publish
-        cwd: src/MicroServices
         code: |
           dotnet publish -o publish
     - script:
-        name: test-restore
-        cwd: test/MicroServices.Tests
-        code: |
-           dotnet restore
-    - script:
-        name: test-build
-        cwd: test/MicroServices.Tests
-        code: |
-          dotnet build
-    - script:
-        name: test-run
-        cwd: test/MicroServices.Tests
-        code: |
-          dotnet test
-    - script:
-        name: integration-test-restore
-        cwd: test/MicroServices.Tests.Integration
-        code: |
-          dotnet restore
-    - script:
-        name: integration-test-build
-        cwd: test/SMicroServices.Tests.Integration
-        code: |
-          dotnet build
-    - script:
-        name: integration-test-run
-        cwd: test/SMicroServices.Tests.Integration
-        code: |
-          dotnet test
-    - script:
         name: copy binary
-        cwd: src/MicroServices.TeamService
         code: |
           cp -r . $WERCKER_OUTPUT_DIR/app 
 deploy:
