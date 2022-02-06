@@ -27,5 +27,5 @@ deploy:
         tag: latest
         repository: dockrudan/microservices
         registry: https://registry.hub.docker.com
-        entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
+        entrypoint: "chmod 755 /pipeline/source/app/docker_entrypoint.sh"
 
