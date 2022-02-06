@@ -19,6 +19,11 @@ build:
         code: |
           cp -r . $WERCKER_OUTPUT_DIR/app
           cd $WERCKER_OUTPUT_DIR/app
+    - script:
+        name: chmod
+        cwd: src/SimpleApi
+        code: |
+          chmod +x ./docker_entrypoint.sh
 deploy:
   steps:
     - internal/docker-push:
@@ -27,5 +32,5 @@ deploy:
         tag: latest
         repository: dockrudan/microservices
         registry: https://registry.hub.docker.com
-        entrypoint: "chmod 755 /pipeline/source/app/docker_entrypoint.sh"
+        entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
 
